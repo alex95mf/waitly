@@ -1,0 +1,1 @@
+REPLACE INTO `empresas` (`Id`, `Nombre`, `Nemonico`, `FechaCreacion`, `FechaEliminacion`, `FechaModificacion`, `IpCreacion`, `IpEliminacion`, `IpModificacion`, `Removido`, `Token`, `UsuarioCreacion`, `UsuarioEliminacion`, `UsuarioModificacion`) VALUES (1, 'Empresa 1', 'Empr1', '2025-06-24 22:05:35.878026', NULL, NULL, 'IP.PRUEBA', NULL, NULL, 0, NULL, NULL, NULL, NULL);
