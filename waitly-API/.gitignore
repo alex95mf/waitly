@@ -1,0 +1,16 @@
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/
+TestResults/
+.idea/
+.DS_Store
+logs/
+wwwroot/
+packages/
+project.lock.json
+global.json
+appsettings*.json
+secrets.json
