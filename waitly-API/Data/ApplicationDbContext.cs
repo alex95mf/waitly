@@ -1,7 +1,7 @@
-﻿using iSit_API.Models.Entities;
+﻿using waitly_API.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ISit_API.Data
+namespace waitly_API.Data
 {
     public class ApplicationDbContext : DbContext
     {

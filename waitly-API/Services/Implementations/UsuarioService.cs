@@ -1,12 +1,12 @@
-﻿using ISit_API.Data;
+﻿using waitly_API.Data;
 using Microsoft.EntityFrameworkCore;
-using iSit_API.Models.DTOs;
+using waitly_API.Models.DTOs;
 using System.Text;
 using System.Security.Cryptography;
-using iSit_API.Services.Interfaces;
-using iSit_API.Models.Entities;
+using waitly_API.Services.Interfaces;
+using waitly_API.Models.Entities;
 
-namespace iSit_API.Services.Implementations
+namespace waitly_API.Services.Implementations
 {
     public class UsuarioService : IUsuarioService
     {

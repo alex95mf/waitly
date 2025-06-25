@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace iSit_API.Models.Entities
+namespace waitly_API.Models.Entities
 {
     public class Permiso : EntidadBase
     {

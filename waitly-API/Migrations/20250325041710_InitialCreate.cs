@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace iSit_API.Migrations
+namespace waitly_API.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

@@ -1,7 +1,7 @@
-using iSit_API.Models.Auth;
-using iSit_API.Services.Implementations;
-using iSit_API.Services.Interfaces;
-using ISit_API.Data;
+using waitly_API.Models.Auth;
+using waitly_API.Services.Implementations;
+using waitly_API.Services.Interfaces;
+using waitly_API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -98,9 +98,9 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "ISit-API",
+        Title = "waitly-API",
         Version = "v1",
-        Description = "API para el sistema de gestión ISit"
+        Description = "API para el sistema de gestión waitly"
     });
 
     // Configurar Swagger para usar JWT
@@ -149,7 +149,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     //app.UseSwaggerUI();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ISit-API v1"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "waitly-API v1"));
 
     // Add automatic migrations in development
     using (var scope = app.Services.CreateScope())

@@ -1,4 +1,4 @@
-﻿namespace iSit_API.Models.DTOs
+﻿namespace waitly_API.Models.DTOs
 {
     public class AuthResponseDTO
     {

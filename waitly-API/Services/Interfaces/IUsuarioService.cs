@@ -1,7 +1,7 @@
-﻿using iSit_API.Models;
-using iSit_API.Models.DTOs;
+﻿using waitly_API.Models;
+using waitly_API.Models.DTOs;
 
-namespace iSit_API.Services.Interfaces
+namespace waitly_API.Services.Interfaces
 {
     public interface IUsuarioService
     {

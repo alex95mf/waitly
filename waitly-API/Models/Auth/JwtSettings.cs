@@ -1,4 +1,4 @@
-﻿namespace iSit_API.Models.Auth
+﻿namespace waitly_API.Models.Auth
 {
     public class JwtSettings
     {

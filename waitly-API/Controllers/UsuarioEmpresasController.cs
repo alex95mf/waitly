@@ -1,10 +1,10 @@
-﻿using iSit_API.Models.DTOs;
+﻿using waitly_API.Models.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using iSit_API.Services.Interfaces;
-using iSit_API.Models.Entities;
+using waitly_API.Services.Interfaces;
+using waitly_API.Models.Entities;
 
-namespace iSit_API.Controllers
+namespace waitly_API.Controllers
 {
     [Route("api/v1/usuarios-empresas")]
     [ApiController]

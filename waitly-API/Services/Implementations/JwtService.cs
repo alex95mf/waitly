@@ -1,13 +1,13 @@
-﻿using iSit_API.Models.Auth;
-using iSit_API.Models.DTOs;
-using iSit_API.Services.Interfaces;
+﻿using waitly_API.Models.Auth;
+using waitly_API.Models.DTOs;
+using waitly_API.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace iSit_API.Services.Implementations
+namespace waitly_API.Services.Implementations
 {
     public class JwtService: IJwtService
     {

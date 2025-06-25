@@ -1,9 +1,9 @@
-﻿using iSit_API.Models.Entities;
+﻿using waitly_API.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace iSit_API.Controllers
+namespace waitly_API.Controllers
 {
     /// <summary>
     /// Controlador base que proporciona métodos comunes para respuestas de API estandarizadas

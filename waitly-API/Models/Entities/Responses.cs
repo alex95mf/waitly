@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace iSit_API.Models.Entities
+namespace waitly_API.Models.Entities
 {
     /// <summary>
     /// Clase estándar para todas las respuestas de la API

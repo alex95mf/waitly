@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>iSit_API</RootNamespace>
+    <RootNamespace>waitly_API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
