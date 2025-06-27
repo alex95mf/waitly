@@ -22,6 +22,9 @@ namespace waitly_API.Data
         public DbSet<Asiento> Asientos { get; set; }
         public DbSet<GrupoAsiento> GruposAsientos { get; set; }
         public DbSet<Catalogo> Catalogos { get; set; }
+        public DbSet<Carta> Cartas { get; set; }
+        public DbSet<ItemCarta> ItemsCarta { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -150,6 +153,24 @@ namespace waitly_API.Data
                 .WithMany(c => c.Hijos)
                 .HasForeignKey(c => c.IdPadre)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // Configure Carta - Empresa relationship
+            modelBuilder.Entity<Carta>()
+             .HasOne(c => c.Empresa)
+             .WithMany(e => e.Cartas)
+             .HasForeignKey(c => c.IdEmpresa);
+
+            // Configure Carta - ItemCarta relationship
+            modelBuilder.Entity<ItemCarta>()
+              .HasOne(ic => ic.Carta)
+              .WithMany(c => c.ItemsCarta)
+              .HasForeignKey(ic => ic.IdCarta);
+
+            // Configure ItemCarta - Categoria relationship
+            modelBuilder.Entity<ItemCarta>()
+                .HasOne(ic => ic.Categoria)
+                .WithMany()
+                .HasForeignKey(ic => ic.IdCategoria);
         }
     }
 }

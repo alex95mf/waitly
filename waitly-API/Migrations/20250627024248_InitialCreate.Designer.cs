@@ -12,7 +12,7 @@ using waitly_API.Data;
 namespace waitly_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250625025847_InitialCreate")]
+    [Migration("20250627024248_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -99,6 +99,76 @@ namespace waitly_API.Migrations
                     b.HasIndex("IdTipo");
 
                     b.ToTable("Asientos");
+                });
+
+            modelBuilder.Entity("waitly_API.Models.Entities.Carta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("FechaEliminacion")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("IdEmpresa")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IpCreacion")
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<string>("IpEliminacion")
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<string>("IpModificacion")
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<string>("Nemonico")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Nombre")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<bool>("Removido")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Token")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("UsuarioEliminacion")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("UsuarioModificacion")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdEmpresa");
+
+                    b.ToTable("Cartas");
                 });
 
             modelBuilder.Entity("waitly_API.Models.Entities.Catalogo", b =>
@@ -297,6 +367,84 @@ namespace waitly_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GruposAsientos");
+                });
+
+            modelBuilder.Entity("waitly_API.Models.Entities.ItemCarta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("FechaEliminacion")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("IdCarta")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCategoria")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IpCreacion")
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<string>("IpEliminacion")
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<string>("IpModificacion")
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<string>("Nemonico")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Nombre")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<double>("Precio")
+                        .HasColumnType("double");
+
+                    b.Property<bool>("Removido")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Token")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("UsuarioEliminacion")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("UsuarioModificacion")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdCarta");
+
+                    b.HasIndex("IdCategoria");
+
+                    b.ToTable("ItemsCarta");
                 });
 
             modelBuilder.Entity("waitly_API.Models.Entities.Menu", b =>
@@ -786,6 +934,17 @@ namespace waitly_API.Migrations
                     b.Navigation("Tipo");
                 });
 
+            modelBuilder.Entity("waitly_API.Models.Entities.Carta", b =>
+                {
+                    b.HasOne("waitly_API.Models.Entities.Empresa", "Empresa")
+                        .WithMany("Cartas")
+                        .HasForeignKey("IdEmpresa")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+                });
+
             modelBuilder.Entity("waitly_API.Models.Entities.Catalogo", b =>
                 {
                     b.HasOne("waitly_API.Models.Entities.Catalogo", "Padre")
@@ -795,6 +954,25 @@ namespace waitly_API.Migrations
                         .IsRequired();
 
                     b.Navigation("Padre");
+                });
+
+            modelBuilder.Entity("waitly_API.Models.Entities.ItemCarta", b =>
+                {
+                    b.HasOne("waitly_API.Models.Entities.Carta", "Carta")
+                        .WithMany("ItemsCarta")
+                        .HasForeignKey("IdCarta")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("waitly_API.Models.Entities.Catalogo", "Categoria")
+                        .WithMany()
+                        .HasForeignKey("IdCategoria")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Carta");
+
+                    b.Navigation("Categoria");
                 });
 
             modelBuilder.Entity("waitly_API.Models.Entities.Menu", b =>
@@ -937,6 +1115,11 @@ namespace waitly_API.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("waitly_API.Models.Entities.Carta", b =>
+                {
+                    b.Navigation("ItemsCarta");
+                });
+
             modelBuilder.Entity("waitly_API.Models.Entities.Catalogo", b =>
                 {
                     b.Navigation("Hijos");
@@ -944,6 +1127,8 @@ namespace waitly_API.Migrations
 
             modelBuilder.Entity("waitly_API.Models.Entities.Empresa", b =>
                 {
+                    b.Navigation("Cartas");
+
                     b.Navigation("Menus");
 
                     b.Navigation("Roles");

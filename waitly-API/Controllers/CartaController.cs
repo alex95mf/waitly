@@ -26,7 +26,7 @@ namespace waitly_API.Controllers
         {
             try
             {
-                var carta = await _cartaService.GetAllCartaAsync();
+                var carta = await _cartaService.GetAllCartasAsync();
                 return ApiOk(carta, "Menús recuperados exitosamente");
             }
             catch (Exception ex)
@@ -72,8 +72,7 @@ namespace waitly_API.Controllers
                 return ApiCreated(
                     carta,
                     "Carta creada exitosamente",
-                    nameof(GetCarta),
-                    new { id = carta.Id }
+                    nameof(GetCarta)
                 );
             }
             catch (InvalidOperationException ex)
@@ -97,7 +96,7 @@ namespace waitly_API.Controllers
         {
             try
             {
-                bool result = await _cartaService.UpdateCartaAsync(id, updateMenuDto);
+                bool result = await _cartaService.UpdateCartaAsync(id, updateCartaDto);
                 if (!result)
                 {
                     return ApiNotFound<CartaDTO>($"Carta con ID {id} no encontrada");

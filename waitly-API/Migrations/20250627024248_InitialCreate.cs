@@ -213,6 +213,50 @@ namespace waitly_API.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Cartas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Nemonico = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Descripcion = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IdEmpresa = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    FechaEliminacion = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    UsuarioCreacion = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UsuarioModificacion = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UsuarioEliminacion = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Token = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IpCreacion = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IpModificacion = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IpEliminacion = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Removido = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cartas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cartas_Empresas_IdEmpresa",
+                        column: x => x.IdEmpresa,
+                        principalTable: "Empresas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
@@ -405,6 +449,58 @@ namespace waitly_API.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "ItemsCarta",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Nemonico = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Descripcion = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Precio = table.Column<double>(type: "double", nullable: false),
+                    IdCategoria = table.Column<int>(type: "int", nullable: false),
+                    IdCarta = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    FechaEliminacion = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    UsuarioCreacion = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UsuarioModificacion = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UsuarioEliminacion = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Token = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IpCreacion = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IpModificacion = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IpEliminacion = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Removido = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemsCarta", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ItemsCarta_Cartas_IdCarta",
+                        column: x => x.IdCarta,
+                        principalTable: "Cartas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemsCarta_Catalogos_IdCategoria",
+                        column: x => x.IdCategoria,
+                        principalTable: "Catalogos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "RolPermisos",
                 columns: table => new
                 {
@@ -546,9 +642,24 @@ namespace waitly_API.Migrations
                 column: "IdTipo");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cartas_IdEmpresa",
+                table: "Cartas",
+                column: "IdEmpresa");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Catalogos_IdPadre",
                 table: "Catalogos",
                 column: "IdPadre");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemsCarta_IdCarta",
+                table: "ItemsCarta",
+                column: "IdCarta");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemsCarta_IdCategoria",
+                table: "ItemsCarta",
+                column: "IdCategoria");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Menus_IdEmpresa",
@@ -633,6 +744,9 @@ namespace waitly_API.Migrations
                 name: "Asientos");
 
             migrationBuilder.DropTable(
+                name: "ItemsCarta");
+
+            migrationBuilder.DropTable(
                 name: "PermisosPantallas");
 
             migrationBuilder.DropTable(
@@ -646,6 +760,9 @@ namespace waitly_API.Migrations
 
             migrationBuilder.DropTable(
                 name: "GruposAsientos");
+
+            migrationBuilder.DropTable(
+                name: "Cartas");
 
             migrationBuilder.DropTable(
                 name: "Pantallas");

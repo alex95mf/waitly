@@ -2,7 +2,7 @@
 
 namespace waitly_API.Models.Entities
 {
-    public class Empresa : EntidadBase
+    public class Carta : EntidadBase
     {
         public int Id { get; set; }
 
@@ -12,10 +12,15 @@ namespace waitly_API.Models.Entities
         [StringLength(50)]
         public string Nemonico { get; set; }
 
+        [StringLength(500)]
+        public string Descripcion { get; set; }
+
+        public int IdEmpresa { get; set; }
+
         // Navigation properties
-        public ICollection<UsuarioEmpresa> UsuarioEmpresas { get; set; }
-        public ICollection<Rol> Roles { get; set; }
-        public ICollection<Menu> Menus { get; set; }
-        public ICollection<Carta> Cartas { get; set; }
+        public Empresa Empresa { get; set; }
+
+        public ICollection<ItemCarta> ItemsCarta { get; set; }
     }
+    
 }
