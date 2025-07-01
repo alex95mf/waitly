@@ -33,8 +33,6 @@ namespace waitly_API.Models.DTOs
         public string Descripcion { get; set; }
 
         public int IdEmpresa { get; set; }
-
-        public List<int> ItemsCarta { get; set; }
     }
 
     public class UpdateCartaDTO
@@ -43,12 +41,11 @@ namespace waitly_API.Models.DTOs
         public string Nombre { get; set; }
 
         [StringLength(50, MinimumLength = 2)]
-        public string nemonico { get; set; }
+        public string Nemonico { get; set; }
 
         [StringLength(500)]
         public string Descripcion { get; set; }
 
         public int? IdEmpresa { get; set; }
-        public List<int> ItemsCarta { get; set; }
     }
 }

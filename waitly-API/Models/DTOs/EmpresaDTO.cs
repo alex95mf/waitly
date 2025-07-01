@@ -4,7 +4,6 @@ namespace waitly_API.Models.DTOs
 {
     public class EmpresaDTO
     {
-        [Required]
         public int Id { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 3)]

@@ -27,7 +27,7 @@ namespace waitly_API.Controllers
             try
             {
                 var carta = await _cartaService.GetAllCartasAsync();
-                return ApiOk(carta, "Menús recuperados exitosamente");
+                return ApiOk(carta, "Cartas recuperadas exitosamente");
             }
             catch (Exception ex)
             {
@@ -92,7 +92,7 @@ namespace waitly_API.Controllers
         [ProducesResponseType(typeof(ApiResponse<CartaDTO>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse<CartaDTO>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse<CartaDTO>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<ApiResponse<CartaDTO>>> UpdateMenu(int id, UpdateCartaDTO updateCartaDto)
+        public async Task<ActionResult<ApiResponse<CartaDTO>>> UpdateCarta(int id, UpdateCartaDTO updateCartaDto)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace waitly_API.Controllers
                 {
                     return ApiNotFound<object>($"Carta con ID {id} no encontrada");
                 }
-                return ApiOk<object>(null!, "Carta eliminado exitosamente");
+                return ApiOk<object>(null!, "Carta eliminada exitosamente");
             }
             catch (InvalidOperationException ex)
             {
@@ -141,76 +141,5 @@ namespace waitly_API.Controllers
                 return ApiServerError<object>("Error al eliminar la carta", ex);
             }
         }
-
-        // REVISAR A PARTIR DE AQUÍ:
-
-        //// GET: api/v1/Carta/empresa/{empresaId}
-        //[HttpGet("empresa/{empresaId}")]
-        //[Authorize]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<CartaDTO>>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<CartaDTO>>), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<CartaDTO>>), StatusCodes.Status500InternalServerError)]
-        //public async Task<ActionResult<ApiResponse<IEnumerable<CartaDTO>>>> GetMenusByEmpresa(int empresaId)
-        //{
-        //    try
-        //    {
-        //        var carta = await _cartaService.GetMenusByEmpresaIdAsync(empresaId);
-        //        return ApiOk(carta, $"Menús de la empresa con ID {empresaId} recuperados exitosamente");
-        //    }
-        //    catch (InvalidOperationException ex)
-        //    {
-        //        return ApiBadRequest<IEnumerable<CartaDTO>>(ex.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ApiServerError<IEnumerable<CartaDTO>>($"Error al obtener los menús de la empresa con ID {empresaId}", ex);
-        //    }
-        //}
-
-        //// GET: api/v1/Carta/empresa/{empresaId}/tree
-        //[HttpGet("empresa/{empresaId}/tree")]
-        //[Authorize]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<MenuTreeDTO>>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<MenuTreeDTO>>), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<MenuTreeDTO>>), StatusCodes.Status500InternalServerError)]
-        //public async Task<ActionResult<ApiResponse<IEnumerable<MenuTreeDTO>>>> GetMenuTreeByEmpresa(int empresaId)
-        //{
-        //    try
-        //    {
-        //        var menuTree = await _cartaService.GetMenuTreeByEmpresaIdAsync(empresaId);
-        //        return ApiOk(menuTree, $"Árbol de menús de la empresa con ID {empresaId} recuperado exitosamente");
-        //    }
-        //    catch (InvalidOperationException ex)
-        //    {
-        //        return ApiBadRequest<IEnumerable<MenuTreeDTO>>(ex.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ApiServerError<IEnumerable<MenuTreeDTO>>($"Error al obtener el árbol de menús de la empresa con ID {empresaId}", ex);
-        //    }
-        //}
-
-        //// GET: api/v1/Carta/usuario/{usuarioId}/empresa/{empresaId}
-        //[HttpGet("usuario/{usuarioId}/empresa/{empresaId}")]
-        //[Authorize]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<MenuUsuarioDTO>>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<MenuUsuarioDTO>>), StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(typeof(ApiResponse<IEnumerable<MenuUsuarioDTO>>), StatusCodes.Status500InternalServerError)]
-        //public async Task<ActionResult<ApiResponse<IEnumerable<MenuUsuarioDTO>>>> GetMenusByUsuario(int usuarioId, int empresaId)
-        //{
-        //    try
-        //    {
-        //        var carta = await _cartaService.GetMenusByUsuarioIdAsync(usuarioId, empresaId);
-        //        return ApiOk(carta, $"Menús del usuario con ID {usuarioId} en la empresa con ID {empresaId} recuperados exitosamente");
-        //    }
-        //    catch (InvalidOperationException ex)
-        //    {
-        //        return ApiBadRequest<IEnumerable<MenuUsuarioDTO>>(ex.Message);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ApiServerError<IEnumerable<MenuUsuarioDTO>>($"Error al obtener los menús del usuario con ID {usuarioId} en la empresa con ID {empresaId}", ex);
-        //    }
-        //}
     }
 }
