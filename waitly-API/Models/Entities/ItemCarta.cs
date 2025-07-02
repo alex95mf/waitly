@@ -14,17 +14,15 @@ namespace waitly_API.Models.Entities
 
         [StringLength(500)]
         public string Descripcion { get; set; }
-
         public double Precio { get; set; }
-
         public int IdCategoria { get; set; }
-
         public int IdCarta { get; set; }
+        public int? IdPedido { get; set; }
 
         // Navigation properties
         public Catalogo Categoria { get; set; }
-
         public Carta Carta { get; set; }
+        public Pedido Pedido { get; set; }
     }
 
 }

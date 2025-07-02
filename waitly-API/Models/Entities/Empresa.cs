@@ -17,5 +17,6 @@ namespace waitly_API.Models.Entities
         public ICollection<Rol> Roles { get; set; }
         public ICollection<Menu> Menus { get; set; }
         public ICollection<Carta> Cartas { get; set; }
+        public ICollection<Pedido> Pedidos { get; set; }
     }
 }

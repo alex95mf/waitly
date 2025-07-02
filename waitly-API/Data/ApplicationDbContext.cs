@@ -24,6 +24,7 @@ namespace waitly_API.Data
         public DbSet<Catalogo> Catalogos { get; set; }
         public DbSet<Carta> Cartas { get; set; }
         public DbSet<ItemCarta> ItemsCarta { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -171,6 +172,24 @@ namespace waitly_API.Data
                 .HasOne(ic => ic.Categoria)
                 .WithMany()
                 .HasForeignKey(ic => ic.IdCategoria);
+
+            // Configure Pedido - Empresa relationship
+            modelBuilder.Entity<Pedido>()
+            .HasOne(p => p.Empresa)
+            .WithMany(e => e.Pedidos)
+            .HasForeignKey(p => p.IdEmpresa);
+
+            // Configure Pedido - ItemCarta relationship
+            modelBuilder.Entity<ItemCarta>()
+              .HasOne(ic => ic.Pedido)
+              .WithMany(p => p.ItemsCarta)
+              .HasForeignKey(ic => ic.IdPedido);
+
+            // Configure Pedido - Categoria relationship
+            modelBuilder.Entity<Pedido>()
+                .HasOne(p => p.Estado)
+                .WithMany()
+                .HasForeignKey(p => p.IdEstado);
         }
     }
 }

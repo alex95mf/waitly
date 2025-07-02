@@ -88,6 +88,7 @@ builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<IPantallaService, PantallaService>();
 builder.Services.AddScoped<ICartaService, CartaService>();
 builder.Services.AddScoped<IItemCartaService, ItemCartaService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 // Registrar el servicio JWT
 builder.Services.AddScoped<IJwtService, JwtService>();
 
